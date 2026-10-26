@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>patonet</title>
+<style>
+:root {
+  --bg: #ffffff;
+  --fg: #808080;
+  --strong: #404040;
+  --line: #d9d9d9;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #121212; --fg: #9a9a9a; --strong: #d0d0d0; --line: #333333;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #121212; --fg: #9a9a9a; --strong: #d0d0d0; --line: #333333;
+  color-scheme: dark;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.9;
+}
+main {
+  max-width: 68ch;
+  margin: 0 auto;
+  padding: 24vh 1.25rem 8rem;
+  text-align: center;
+}
+h1 { color: var(--fg); font-size: 1.9rem; margin: 0 0 .5rem; }
+h2 { color: var(--fg); font-size: 1.2rem; margin: 2.2rem 0 .4rem; }
+p { margin: .6rem 0; }
+a { color: var(--fg); }
+a:focus-visible { outline: 2px solid var(--strong); outline-offset: 3px; }
+nav { margin: 1.6rem 0 2.4rem; display: flex; flex-wrap: wrap; justify-content: center; gap: .4rem 1.4rem; }
+nav a[aria-current="page"] { color: var(--strong); text-decoration: none; border-bottom: 1px solid var(--strong); }
+section[hidden] { display: none; }
+dl { margin: 1rem 0; text-align: left; }
+dt { color: var(--strong); margin-top: 1.1rem; }
+dd { margin: .15rem 0 0; }
+hr { border: 0; border-top: 1px solid var(--line); margin: 2.2rem 0; }
+footer { font-size: .85rem; }
+</style>
+</head>
+<body>
+<main>
+  <h1>patonet</h1>
+  <p>enterprise cybersecurity and privacy.</p>
+  <nav aria-label="Pages">
+    <a href="#home">home</a>
+    <a href="#services">services</a>
+    <a href="#privacy">privacy</a>
+    <a href="#security">security</a>
+  </nav>
+
+  <section id="home">
+    <p>we find the weaknesses in your systems. usually before anyone else does.</p>
+    <p>we work with companies, not individuals. this site sets no cookies and keeps no record of your visit.</p>
+    <hr>
+    <p>nothing is wrong. that is the goal.</p>
+  </section>
+
+  <section id="services" hidden>
+    <h2>services</h2>
+    <dl>
+      <dt>penetration testing</dt>
+      <dd>web apps, APIs, internal networks and cloud setups, tested by people, with findings you can act on.</dd>
+      <dt>security architecture review</dt>
+      <dd>we read your design before it ships. we tell you what will go wrong, and roughly when.</dd>
+      <dt>incident response</dt>
+      <dd>containment, forensics, and a written account. we are available at all hours.</dd>
+      <dt>privacy engineering</dt>
+      <dd>data mapping, retention limits, minimization and GDPR readiness built into your systems.</dd>
+      <dt>staff training</dt>
+      <dd>phishing exercises and short, practical sessions for engineers and everyone else.</dd>
+    </dl>
+  </section>
+
+  <section id="privacy" hidden>
+    <h2>privacy</h2>
+    <p>this website collects nothing. no analytics, no cookies, no third-party scripts, no fonts loaded from elsewhere.</p>
+    <p>for client work, we collect only the data needed to do the job, keep it only as long as the contract requires, and delete it afterwards. data processing terms are set out in each client agreement.</p>
+  </section>
+
+  <section id="security" hidden>
+    <h2>security</h2>
+    <dl>
+      <dt>how we handle your data</dt>
+      <dd>encrypted at rest and in transit, access limited to the people on your engagement. every access is logged. we do read the logs.</dd>
+      <dt>how we report</dt>
+      <dd>findings are shared through encrypted channels agreed at kickoff, with remediation guidance for each.</dd>
+      <dt>how we work</dt>
+      <dd>written scope and rules of engagement before any testing begins. nothing happens outside them.</dd>
+    </dl>
+  </section>
+
+  <hr>
+  <footer id="f">patonet. all systems normal.</footer>
+</main>
+
+<script>
+(function () {
+  var names = ['home', 'services', 'privacy', 'security'];
+  function show() {
+    var h = (location.hash || '#home').slice(1);
+    if (names.indexOf(h) === -1) h = 'home';
+    names.forEach(function (n) {
+      document.getElementById(n).hidden = (n !== h);
+    });
+    var links = document.querySelectorAll('nav a');
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].getAttribute('href') === '#' + h) links[i].setAttribute('aria-current', 'page');
+      else links[i].removeAttribute('aria-current');
+    }
+    document.title = h === 'home' ? 'patonet' : 'patonet – ' + h;
+  }
+  window.addEventListener('hashchange', show);
+  show();
+})();
+</script>
+</body>
+</html>
