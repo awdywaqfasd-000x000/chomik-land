@@ -1,0 +1,10 @@
+How do I register a corporation at Chomik Land?
+
+You are able to register a corporation by emailing registration.emphasis883@passinbox.com this template:
+
+Corporation Name:
+About Corporation:
+
+Put in your code for the site as an attachment.
+
+If you do not have any code for your site, I will be able to make it. (javascript will not be included in the website, only html and/or css)
