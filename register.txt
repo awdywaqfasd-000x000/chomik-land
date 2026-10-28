@@ -1,1 +1,6 @@
-wip
+message request @johnthechomik on discord this template:
+
+Corporation Name:
+About Corporation:
+
+Attach code for website in msg aswell, if you don't have code for the website i can make it (javascript not included, only html and/or css)
